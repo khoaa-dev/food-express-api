@@ -8,9 +8,8 @@ export const getProvince = (req, res) => {
             .query('select * from Province')
     }).then(result => {
         res.send(result.recordsets);
-        console.dir(result);
     }).catch(err => {
-        console.log(err);
+        res.send("Error: ", err);
     });
 }
 
@@ -19,11 +18,10 @@ export const getProvinceById = (req, res) => {
     sql.connect(config).then(pool => {
         return pool.request()
             .input('id', sql.Int, id)
-            .query('select * from Province where id = @id');
+            .query('select * from Province where id = @id')
     }).then(result => {
         res.send(result.recordsets);
-        console.dir(result);
     }).catch(err => {
-        console.log(err);
+        res.send("Error: ", err);
     });
 }
