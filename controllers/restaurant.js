@@ -1,11 +1,13 @@
 import sql from 'mssql';
 import config from '../config.js';
 
+
 export const getAllResTaurant = (req, res) => {
     sql.connect(config)
         .then(pool => {
-            return pool.request()
-                    .query('select * from Restaurant'); 
+            let restaurants = pool.request().query('select * from Restaurant');
+            
+            return restaurants;
         })
         .then(result => {
             res.send(result.recordsets);
