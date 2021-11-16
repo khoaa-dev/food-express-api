@@ -3,7 +3,7 @@ import config from '../config.js';
 
 export const getAllCancellation = (req, res) => {
     sql.connect(config).then(pool => {
-        return pool.request().query('select * from Cancellation');
+        return pool.request().query('select * from CancellationReason');
     })
     .then(result => {
         res.send(result.recordsets);
