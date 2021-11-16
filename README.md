@@ -32,7 +32,7 @@ http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/province/id: Ge
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/district: Get all district  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/district/id: Get district by ID  
 
-p://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/village: Get all village  
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/village: Get all village  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/district/id: Get village by ID  
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/discount: Get all discount  
