@@ -6,7 +6,7 @@ export const getAllOrder = (req, res) => {
         return pool.request().query('select * from Orders');
     })
     .then(result => {
-        res.send(result.recordsets);
+        res.send(result.recordset);
     })
     .catch(err => {
         res.send('error: ', err);
@@ -20,7 +20,7 @@ export const getOrderByCustomerId = (req, res) => {
         return pool.request().query(`select * from Orders where customerId = ${customerId}`);
     })
     .then(result => {
-        res.send(result.recordsets);
+        res.send(result.recordset);
     })
     .catch(err => {
         res.send('error: ', err);

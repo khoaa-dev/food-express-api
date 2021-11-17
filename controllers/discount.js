@@ -22,7 +22,7 @@ export const getDiscountByCustomerId = (req, res) => {
                                     cd.customerId = ${customerId}`);
     })
     .then(result => {
-        res.send(result.recordsets);
+        res.send(result.recordset);
     })
     .catch(err => {
         res.send('error: ', err);
@@ -38,7 +38,7 @@ export const getDiscountByRestaurantId = (req, res) => {
                                     rd.restaurantId = ${restaurantId}`);
     })
     .then(result => {
-        res.send(result.recordsets);
+        res.send(result.recordset);
     })
     .catch(err => {
         res.send('error: ', err);

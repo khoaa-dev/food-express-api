@@ -10,7 +10,7 @@ export const getAllResTaurant = (req, res) => {
             return restaurants;
         })
         .then(result => {
-            res.send(result.recordsets);
+            res.send(result.recordset);
         })
         .catch((err) => res.send("error: ", err));
 }
@@ -24,7 +24,7 @@ export const getRestaurantByName = (req, res) => {
                     .query(`select * from Restaurant where nameRes like N'${name}'`);
         })
         .then(result => {
-            res.send(result.recordsets);
+            res.send(result.recordset);
         })
         .catch(err => {
             res.send("error: ", err);
@@ -40,7 +40,7 @@ export const getRestaurantById1 = (req, res) => {
                     .query(`select * from Restaurant where id = @restaurantId`);
         })
         .then(result => {
-            res.send(result.recordsets);
+            res.send(result.recordset);
         })
         .catch(err => {
             res.send("error: ", err);

@@ -6,7 +6,7 @@ export const getAllFeedBack = (req, res) => {
         return pool.request().query('select * from Feedback');
     })
     .then(result => {
-        res.send(result.recordsets);
+        res.send(result.recordset);
     })
     .catch(err => {
         res.send('error: ', err);
@@ -20,7 +20,7 @@ export const getFeedbackByRestaurantId = (req, res) => {
         return pool.request().query(`select * from Feedback where restaurantId = ${restaurantId}`);
     })
     .then(result => {
-        res.send(result.recordsets);
+        res.send(result.recordset);
     })
     .catch(err => {
         res.send('error: ', err);

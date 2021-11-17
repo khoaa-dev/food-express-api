@@ -7,7 +7,7 @@ export const getAllFood = (req, res) => {
             return pool.request().query(`SELECT * FROM Food`);
         })
         .then(result => {
-            res.send(result.recordsets);
+            res.send(result.recordset);
         })
         .catch((err) => res.send("error: ", err));
 }
@@ -20,7 +20,7 @@ export const getFoodByRestaurantId = (req, res) => {
                         .query(`SELECT * FROM Food WHERE restaurantId = ${restaurantId}`);
         })
         .then(result => {
-            res.send(result.recordsets);
+            res.send(result.recordset);
         })
         .catch((err) => res.send("error: ", err));
 }

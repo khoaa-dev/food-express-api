@@ -7,7 +7,7 @@ export const getProvince = (req, res) => {
         return pool.request()
             .query('select * from Province')
     }).then(result => {
-        res.send(result.recordsets);
+        res.send(result.recordset);
     }).catch(err => {
         res.send("Error: ", err);
     });
@@ -20,7 +20,7 @@ export const getProvinceById = (req, res) => {
             .input('id', sql.Int, id)
             .query('select * from Province where id = @id')
     }).then(result => {
-        res.send(result.recordsets);
+        res.send(result.recordset);
     }).catch(err => {
         res.send("Error: ", err);
     });
