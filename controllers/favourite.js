@@ -14,9 +14,12 @@ export const getAllFavourite = (req, res) => {
 }
 
 export const getFavouriteByCustomerId = (req, res) => {
-    const customerId = req.params;
+    const customerId = req.params.customerId;
     sql.connect(config).then(pool => {
-        return pool.request().query(`select * from Favourite where customerId = ${customerId}`);
+        return pool.request().query(`select Favourite.customerId, Favourite.restaurantId, nameRes, background
+                                    from Favourite, Restaurant
+                                    where Favourite.restaurantId = Restaurant.id and	
+                                    Favourite.customerId = ${customerId}`);
     })
     .then(result => {
         res.send(result.recordset);
@@ -25,3 +28,4 @@ export const getFavouriteByCustomerId = (req, res) => {
         res.send('error: ', err);
     })
 }
+

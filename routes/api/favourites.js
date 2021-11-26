@@ -8,4 +8,7 @@ router.get('', getAllFavourite);
 
 router.get('/:customerId', getFavouriteByCustomerId);
 
+
+
+
 export default router;
