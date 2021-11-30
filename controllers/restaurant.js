@@ -40,10 +40,29 @@ export const getRestaurantById1 = (req, res) => {
                     .query(`select * from Restaurant where id = @restaurantId`);
         })
         .then(result => {
+            
             res.send(result.recordset);
         })
         .catch(err => {
             res.send("error: ", err);
+        })
+}
+
+export const getRestaurantByPageNumber = (req, res) => {
+    const {page} = req.params;
+    const startIndex = (page - 1) * 8;
+    const endIndex = page * 8;
+    sql.connect(config)
+        .then(pool => {
+            return pool.request()
+                    .query(`select * from Restaurant`);
+        })
+        .then(result => {
+            result = result.recordset.slice(startIndex, endIndex);
+            res.send(result);
+        })
+        .catch(err => {
+            console.log(err);
         })
 }
 
