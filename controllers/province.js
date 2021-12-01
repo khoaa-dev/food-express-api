@@ -27,10 +27,15 @@ export const getProvinceById = (req, res) => {
 }
 
 export const createProvince = (req, res) => {
-    const data = req.body;
+    const data = {
+        id: req.body.id,
+        name: req.body.nameProvince
+    };
     sql.connect(config).then(pool => {
+        pool.request()
+            .query(`insert into Province values ('${data.name}')`);
         return pool.request()
-            .query('select * from Province');
+            .query(`select * from Province where nameProvince = '${data.name}'`);
     }).then(result => {
         res.send(result.recordset);
     }).catch(err => {
