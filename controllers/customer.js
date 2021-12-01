@@ -63,7 +63,7 @@ export const updateCustomer = (req, res) => {
         number: req.body.number
     };
     sql.connect(config).then(pool => {
-        return pool.request()
+        pool.request()
             .query(`update Customer set fullName = N'${data.fullName}',
                                         phone = '${data.phone}',
                                         gender = '${data.gender}',
@@ -73,12 +73,10 @@ export const updateCustomer = (req, res) => {
                                         dob = '${data.dob}',
                                         street = '${data.street}',
                                         number = '${data.number}'
-                    where id = ${id}`);        
+                    where id = ${id}`);    
+        return  pool.request().query(`select * from Customer where id = ${id}`)
     }).then(result => {
-        if(result.rowsAffected == 1) {
-            res.send("Update successfully");
-        }
-        
+        res.send(result.recordset);
     }).catch(err => {
         console.log(err);
     });
