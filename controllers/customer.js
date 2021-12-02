@@ -41,7 +41,13 @@ export const createCustomer = (req, res) => {
         
     }).then(result => {
         if(result.rowsAffected == 1) {
-            res.send("Create successfully");
+            res.send({
+                "status": "Create successfully"
+            });
+        } else {
+            res.send({
+                "status": "Create failed"
+            });
         }
         
     }).catch(err => {
