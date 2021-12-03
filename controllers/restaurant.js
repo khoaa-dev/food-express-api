@@ -80,3 +80,18 @@ export const getRestaurantByMenuId = (req, res) => {
         })
 }
 
+export const searchRestaurantByName = (req, res) => {
+    const {name} = req.params;
+    sql.connect(config)
+        .then(pool => {
+            return pool.request()
+                    .query(`select * from Restaurant where nameRes like N'%${name}%'`);
+        })
+        .then(result => {
+            res.send(result.recordset);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
