@@ -3,6 +3,8 @@
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/restaurant: Get all restaurant  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/restaurant/page/number: Get restaurant by page number  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/restaurant/name: Get restaurant by name  
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/restaurant/id/:id: Get restaurant by id  
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/restaurant/menuId/:menuId: Get restaurant by menu category id
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/food: Get all food  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/food/id: get food by restaurant ID  
@@ -14,8 +16,8 @@ http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/feedbackImage/f
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/customer: Get all customer  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/customer/id: Get customer by id  
-http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/createCustomer: Create customer  
-http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/updateCustomer/id: Update customer by id 
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/customer/createCustomer: Create customer  
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/customer/updateCustomer/id: Update customer by id 
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite: Get all favourite  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite/customerId: Get favourite by customer Id  
