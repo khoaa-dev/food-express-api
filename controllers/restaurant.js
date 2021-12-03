@@ -31,16 +31,15 @@ export const getRestaurantByName = (req, res) => {
         })
 }
 
-export const getRestaurantById1 = (req, res) => {
-    const {restaurantId} = req.params;
+export const getRestaurantById = (req, res) => {
+    const {id} = req.params;
+    console.log(id);
     sql.connect(config)
         .then(pool => {
             return pool.request()
-                    .input('restaurantId', sql.Int, restaurantId)
-                    .query(`select * from Restaurant where id = @restaurantId`);
+                    .query(`select * from Restaurant where id = ${id}`);
         })
         .then(result => {
-            
             res.send(result.recordset);
         })
         .catch(err => {
@@ -60,6 +59,21 @@ export const getRestaurantByPageNumber = (req, res) => {
         .then(result => {
             result = result.recordset.slice(startIndex, endIndex);
             res.send(result);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const getRestaurantByMenuId = (req, res) => {
+    const {menuId} = req.params;
+    sql.connect(config)
+        .then(pool => {
+            return pool.request()
+                    .query(`select * from Restaurant where menuCategoryId = ${menuId}`);
+        })
+        .then(result => {
+            res.send(result.recordset);
         })
         .catch(err => {
             console.log(err);
