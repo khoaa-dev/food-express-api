@@ -3,7 +3,7 @@ import config from '../config.js';
 
 export const getAllAnnouncement = (req, res) => {
     sql.connect(config).then(pool => {
-        return pool.request().query('select * from Announcement');
+        return pool.request().query(`select * from Announcement`);
     })
     .then(result => {
         res.send(result.recordset);
@@ -22,7 +22,8 @@ export const createAnnouncement = (req, res) => {
     };
     sql.connect(config).then(pool => {
         return pool.request()
-            .query(`insert into Announcement (title, content, createdTime, imageUrl)
+            .query(`set dateformat dmy
+                    insert into Announcement (title, content, createdTime, imageUrl)
                     values ('${data.title}', '${data.content}', '${data.createdTime}', '${data.imageUrl}')`);
         
     }).then(result => {
