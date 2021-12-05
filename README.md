@@ -24,7 +24,6 @@ http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite: Get 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite/customerId: Get favourite by customer Id  
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/announcement: Get all announcement  
-http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/announcement/customerId: Get announcement by customer ID  
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/order: Gett all order  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/order/customerId: Get order by customer ID  
