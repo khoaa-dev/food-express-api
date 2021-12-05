@@ -1,11 +1,11 @@
 import express from 'express';
 
-import { getAllAnnouncement, getAnnouncementByCustomerId } from '../../controllers/announcement.js';
+import { getAllAnnouncement, createAnnouncement } from '../../controllers/announcement.js';
 
 const router = express.Router();
 
 router.get('', getAllAnnouncement);
 
-router.get('/:customerId', getAnnouncementByCustomerId);
+router.post('/createAnnouncement', createAnnouncement);
 
 export default router;
