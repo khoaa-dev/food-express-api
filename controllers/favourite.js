@@ -29,3 +29,29 @@ export const getFavouriteByCustomerId = (req, res) => {
     })
 }
 
+export const createFavourite = (req, res) => {
+    const data = {
+        customerId: req.body.customerId,
+        restaurantId: req.body.restaurantId
+    };
+    sql.connect(config).then(pool => {
+        return pool.request()
+            .query(`insert into Favourite (customerId, restaurantId)
+                    values ('${data.customerId}', '${data.restaurantId}')`);
+        
+    }).then(result => {
+        if(result.rowsAffected == 1) {
+            res.send({
+                "status": "Create successfully"
+            });
+        } else {
+            res.send({
+                "status": "Create failed"
+            });
+        }
+        
+    }).catch(err => {
+        console.log(err);
+    });
+}
+

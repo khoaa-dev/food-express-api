@@ -24,3 +24,16 @@ export const getFoodByRestaurantId = (req, res) => {
         })
         .catch((err) => res.send("error: ", err));
 }
+
+export const getFoodByFoodId = (req, res) => {
+    const {id} = req.params;
+    sql.connect(config)
+        .then(pool => {
+            return pool.request()
+                        .query(`SELECT * FROM Food WHERE id = ${id}`);
+        })
+        .then(result => {
+            res.send(result.recordset);
+        })
+        .catch((err) => console.log(err));
+}

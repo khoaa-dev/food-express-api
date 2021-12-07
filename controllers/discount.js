@@ -45,3 +45,18 @@ export const getDiscountByRestaurantId = (req, res) => {
         
     })
 }
+
+export const getDiscountByCode = (req, res) => {
+    const {code} = req.params;
+    sql.connect(config).then(pool => {
+        return pool.request().query(`select * from Discount 
+                                    where code = '${code}'`);
+    })
+    .then(result => {
+        res.send(result.recordset);
+    })
+    .catch(err => {
+        res.send('error: ', err);
+        
+    })
+}
