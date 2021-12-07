@@ -24,7 +24,7 @@ export const createAnnouncement = (req, res) => {
         return pool.request()
             .query(`set dateformat dmy
                     insert into Announcement (title, content, createdTime, imageUrl)
-                    values ('${data.title}', '${data.content}', '${data.createdTime}', '${data.imageUrl}')`);
+                    values (N'${data.title}', N'${data.content}', '${data.createdTime}', '${data.imageUrl}')`);
         
     }).then(result => {
         if(result.rowsAffected == 1) {
