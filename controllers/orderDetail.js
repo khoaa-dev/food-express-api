@@ -27,3 +27,30 @@ export const getOrderDetailByOrderId = (req, res) => {
         
     })
 }
+
+export const createOrderDetail = (req, res) => {
+    const data = {
+        orderId: req.body.orderId,
+        foodId: req.body.foodId,
+        quantity: req.body.quantity,
+        price: req.body.price
+    };
+    sql.connect(config).then(pool => {
+        return pool.request()
+            .query(`insert into OrderDetail (orderId, foodId, quantity, price)
+                    values (${data.orderId}, ${data.foodId}, ${data.quantity}, ${data.price})`);
+    }).then(result => {
+        if(result.rowsAffected == 1) {
+            res.send({
+                "status": "Create successfully"
+            })
+        } else {
+            res.send({
+                "status": "Create failed"
+            })
+        }
+        
+    }).catch(err => {
+        console.log(err);
+    });
+}
