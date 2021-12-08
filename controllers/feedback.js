@@ -27,3 +27,30 @@ export const getFeedbackByRestaurantId = (req, res) => {
         
     })
 }
+
+export const createFeedback = (req, res) => {
+    const data = {
+        customerId: req.body.customerId,
+        detail: req.body.detail,
+        createdTime: req.body.createdTime,
+        restaurantId: req.body.restaurantId
+    };
+    sql.connect(config).then(pool => {
+        return pool.request()
+            .query(`insert into Feedback (customerId, detail, createdTime, restaurantId)
+                    values ('${data.customerId}', '${data.detail}', '${data.createdTime}', '${data.restaurantId}')`);
+    }).then(result => {
+        if(result.rowsAffected == 1) {
+            res.send({
+                "status": "Create successfully"
+            });
+        } else {
+            res.send({
+                "status": "Create failed"
+            });
+        }
+        
+    }).catch(err => {
+        console.log(err);
+    });
+}

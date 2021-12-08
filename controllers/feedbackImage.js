@@ -27,3 +27,28 @@ export const getFeedbackImageByFeedbackId = (req, res) => {
         
     })
 }
+
+export const createFeedbackImage = (req, res) => {
+    const data = {
+        content: req.body.content,
+        feedbackId: req.body.feedbackId
+    };
+    sql.connect(config).then(pool => {
+        return pool.request()
+            .query(`insert into FeedbackImage (content, feedbackId)
+                    values ('${data.content}', '${data.feedbackId}')`);
+    }).then(result => {
+        if(result.rowsAffected == 1) {
+            res.send({
+                "status": "Create successfully"
+            });
+        } else {
+            res.send({
+                "status": "Create failed"
+            });
+        }
+        
+    }).catch(err => {
+        console.log(err);
+    });
+}
