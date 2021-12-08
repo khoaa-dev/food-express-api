@@ -17,7 +17,7 @@ export const getAllFeedBack = (req, res) => {
 export const getFeedbackByRestaurantId = (req, res) => {
     const {restaurantId} = req.params;
     sql.connect(config).then(pool => {
-        return pool.request().query(`select * from Feedback where restaurantId = ${restaurantId}`);
+        return pool.request().query(`select * from Feedback where restaurantId = ${restaurantId} order by createdTime desc` );
     })
     .then(result => {
         res.send(result.recordset);
@@ -33,12 +33,13 @@ export const createFeedback = (req, res) => {
         customerId: req.body.customerId,
         detail: req.body.detail,
         createdTime: req.body.createdTime,
+        rate: req.body.rate,
         restaurantId: req.body.restaurantId
     };
     sql.connect(config).then(pool => {
         return pool.request()
-            .query(`insert into Feedback (customerId, detail, createdTime, restaurantId)
-                    values ('${data.customerId}', '${data.detail}', '${data.createdTime}', '${data.restaurantId}')`);
+            .query(`insert into Feedback (customerId, rate, detail, createdTime, restaurantId)
+                    values ('${data.customerId}', '${data.rate}', '${data.detail}', '${data.createdTime}', '${data.restaurantId}')`);
     }).then(result => {
         if(result.rowsAffected == 1) {
             res.send({
