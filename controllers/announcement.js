@@ -42,3 +42,25 @@ export const createAnnouncement = (req, res) => {
     });
 }
 
+export const deleteAnnouncement = (req, res) => {
+    const id = req.body.id;
+    sql.connect(config).then(pool => {
+        return pool.request()
+            .query(`delete from Announcement where id = ${id})`);
+        
+    }).then(result => {
+        if(result.rowsAffected == 1) {
+            res.send({
+                "status": "Delete successfully"
+            });
+        } else {
+            res.send({
+                "status": "Delete failed"
+            });
+        }
+        
+    }).catch(err => {
+        console.log(err);
+    });
+}
+

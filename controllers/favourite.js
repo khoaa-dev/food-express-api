@@ -55,3 +55,27 @@ export const createFavourite = (req, res) => {
     });
 }
 
+export const deleteFavourite = (req, res) => {
+    const data = {
+        customerId: req.body.customerId,
+        restaurantId: req.body.restaurantId
+    };
+    sql.connect(config).then(pool => {
+        return pool.request()
+            .query(`delete from Favourite where customerId = '${data.customerId}' and restaurantId = '${data.restaurantId}'`);
+    }).then(result => {
+        if(result.rowsAffected == 1) {
+            res.send({
+                "status": "Delete successfully"
+            });
+        } else {
+            res.send({
+                "status": "Delete failed"
+            });
+        }
+        
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
