@@ -35,6 +35,7 @@ http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/announcement/de
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/order: Get all order  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/order/customerId: Get order by customer ID  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/order/createOrder: Create order  
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/order/updateOrder: Update order  
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/orderDetail: Get all order detail  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/orderDetail/orderId: Get order detail by order ID  
