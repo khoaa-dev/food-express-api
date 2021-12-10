@@ -64,3 +64,27 @@ export const createOrder = (req, res) => {
     });
 }
 
+export const updateOrder = (req, res) => {
+    const data = {
+        id: req.body.id,
+        orderStatus: req.body.orderStatus
+    };
+    sql.connect(config).then(pool => {
+        return pool.request()
+            .query(`update Orders set orderStatus = '${data.orderStatus}' where id = '${data.id}'`);
+    }).then(result => {
+        if(result.rowsAffected == 1) {
+            res.send({
+                "status": "Update successfully"
+            })
+        } else {
+            res.send({
+                "status": "Update failed"
+            })
+        }
+        
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
