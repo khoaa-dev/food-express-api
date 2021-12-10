@@ -39,7 +39,7 @@ export const createFeedback = (req, res) => {
     sql.connect(config).then(pool => {
         return pool.request()
             .query(`insert into Feedback (customerId, rate, detail, createdTime, restaurantId)
-                    values ('${data.customerId}', '${data.rate}', '${data.detail}', '${data.createdTime}', '${data.restaurantId}')`);
+                    values ('${data.customerId}', '${data.rate}', N'${data.detail}', '${data.createdTime}', '${data.restaurantId}')`);
     }).then(result => {
         if(result.rowsAffected == 1) {
             res.send({
