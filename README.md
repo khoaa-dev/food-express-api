@@ -25,10 +25,12 @@ http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/customer/update
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite: Get all favourite  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite/customerId: Get favourite by customer Id  
-http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite/createFavourite: Create favourite
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite/createFavourite: Create favourite  
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/favourite/deleteFavourite: Delete favourite  
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/announcement: Get all announcement  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/announcement/createAnnouncement: Create announcement  
+http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/announcement/deleteAnnouncement/:id: Delete announcement by id  
 
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/order: Get all order  
 http://ec2-3-18-213-174.us-east-2.compute.amazonaws.com:3000/api/order/customerId: Get order by customer ID  
