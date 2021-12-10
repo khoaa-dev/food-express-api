@@ -8,6 +8,6 @@ router.get('', getAllFeedBack);
 
 router.get('/:restaurantId', getFeedbackByRestaurantId);
 
-router.get('/createFeedback', createFeedback);
+router.post('/createFeedback', createFeedback);
 
 export default router;
